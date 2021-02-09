@@ -16,4 +16,11 @@ A Gruvbox theme for Fluxbox that I created, Inspired by [Gruvbox](https://github
 
 #### Windows
 
-![Windows](readme_images/Gruvbox_windows.png)
+![Windows](readme_images/Gruvbox_windows.png)  
+
+
+#### GTK theme and Icons
+
+[Gruvbox GTK theme](https://github.com/3ximus/gruvbox-gtk)  
+
+[Delft-Mint-Darkest Icon theme](https://www.gnome-look.org/s/Gnome/p/1199881)
