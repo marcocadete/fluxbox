@@ -1,0 +1,55 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+xmodmap "/home/marco/.Xmodmap"
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+
+# Picom used for transparency and the "--experimental-backends" prevents
+# screen tearing.
+picom --experimental-backends &
+
+# Dunst is used for notifications
+dunst &
+
+# Network manager applet, that displays in the toolbar.
+nm-applet &
+
+# This will check if I have my HDMI monitor plugged in,
+# and if it is, will enable it and disable my laptops monitor.
+hdmi_active=$(xrandr |grep ' connected' |grep 'HDMI' |awk '{print $1}')
+
+if [ $hdmi_active ]
+then
+    xrandr --output eDP-1 --off --output HDMI-1 --auto &
+fi
+
+# Nitrogen for setting wallpapers and "--restore" will restore the last
+# wallpaper that was selected.
+nitrogen --restore &
+
+# Screen saver and locking of screen when inactive.
+xscreensaver &
+
+# Bluetooth applet that is displayed in the toolbar.
+blueman-applet &
+
+# My PCloud application that also has an applet displayed in the toolbar
+/home/marco/Applications/pcloud &
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+exec fluxbox
+# or if you want to keep a log:
+# exec fluxbox -log "/home/marco/.fluxbox/log"
